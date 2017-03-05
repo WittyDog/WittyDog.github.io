@@ -1,0 +1,83 @@
+<!-- affichage du montant total du panier -->
+<!--
+<span ng-repeat="(model, detail) in cart.content">
+	
+	<p>{{model}}: {{detail.quantity}} x ({{detail.cost}} = {{cart.legoCost(model)}}€)</p>
+</span>
+-->
+
+<!-- Garde Manger -->
+
+<div class="row">
+	
+	<div class="panel panel-default">
+
+	    <div class="panel-body">
+
+	    	<h3>Garde Manger</h3>
+
+	    	<!-- Informations sur l'ensemble des aliments du garde manger -->
+	    	<div class="panel panel-default">
+	    		<div class="panel-body text-center">
+
+	    			<!-- Nombre total de calories -->
+	    			<div class="col-md-4">
+	    				<strong>Calories : </strong> 
+	    				<h4>{{caloriesTotal()}}kcal</h4>
+	    			</div>
+
+	    			<!-- Quantité totale de graisses saturées -->
+	    			<div class="col-md-4">
+	    				<strong>Graisses : </strong> 
+	    				<h4>{{saturatedFatTotal()}}g</h4>
+	    			</div>
+
+	    			<!-- Quantité totale de sel -->
+	    			<div class="col-md-4">
+	    				<strong>Sel : </strong>
+	    				<h4>{{saltTotal()}}g</h4>
+	    			</div>
+	    			
+	    		</div>
+	    	</div>
+
+	    	<!-- Bloc qui liste les aliments du garde manger -->
+	    	<div class="panel panel-default">
+	    		<div class="panel-body">
+
+	    			<h3>Liste des aliments :</h3>
+
+	    			<div class="panel-group">
+						<div class="panel panel-default" ng-repeat="(key,data) in foods">
+				        	<div class="panel-body">
+
+				        		<!-- Nom de l'aliment et sa quantité -->
+				        		<strong>{{data.name}} (x{{data.quantity}})</strong>
+
+				        		<!-- Bouton de suppression de l'aliment -->
+				            	<span class="glyphicon glyphicon-remove pull-right custom-icon" ng-click="removeFromPantry(key)"></span>
+
+				            	<!-- Bouton d'incrémentation de la quantité de l'aliment -->
+				            	<span class="glyphicon glyphicon-plus pull-right custom-icon" ng-click="increaseQuantity(key)"></span>
+
+				            	<!-- Bouton de décrémentation de la quantité de l'aliment --> 
+				            	<span class="glyphicon glyphicon-minus pull-right custom-icon" ng-click="decreaseQuantity(key)"></span>
+
+				            	<!-- Infos sur l'aliment (variables en fonction de la quantité) -->
+				            	<div class="row">
+					                <div class="col-md-4">Calories : {{ data.calories*data.quantity }}kcal</div>
+					                <div class="col-md-4">Graisses : {{ data.fat*data.quantity }}g</div>
+					                <div class="col-md-4">Sel : {{ data.salt*data.quantity }}g</div>
+					            </div>
+
+				        	</div>
+				        </div>
+					</div>
+	    		</div>	
+	    	</div>
+
+
+	    </div>
+	</div>
+
+</div>

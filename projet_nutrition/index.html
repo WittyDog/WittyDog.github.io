@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>App Nutrition</title>
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Feuille de style principale -->
+        <link rel="stylesheet" href="styles/main.css">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="dependances/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="dependances/bootstrap/css/bootstrap-theme.css">
+
+    </head>
+
+    <body ng-app="nutritionApp">
+
+        <div class="container-fluid">
+
+            <!-- Profil utilisateur -->
+            <div class="col-md-3 main-column">
+                <div class="profile"  ng-include="'views/profile.html'" ng-controller="ProfileController as profile"></div>
+            </div>
+
+            <!-- Barre de recherche et résultats de recherche -->
+            <div class="col-md-5 main-column">
+                <div class="search"  ng-include="'views/search.html'"></div>
+            </div>
+
+            <!-- Garde Manger -->
+            <div class="col-md-4 main-column">
+                <div class="pantry"  ng-include="'views/pantry.html'" ng-controller="PantryController as pantry"></div>
+            </div>
+
+        </div>
+
+        <!-- dependances -->
+        <script src="dependances/jquery/dist/jquery.js"></script>
+        <script src="dependances/angular/angular.js"></script>
+        <script src="dependances/bootstrap/js/bootstrap.js"></script>
+
+        <!-- Fichiers source -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/services/foodmanager.js"></script>
+        <script src="scripts/controllers/profile.js"></script> 
+        <script src="scripts/controllers/search.js"></script>
+        <script src="scripts/controllers/pantry.js"></script>       
+
+    </body>
+
+</html>

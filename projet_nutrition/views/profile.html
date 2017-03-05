@@ -1,0 +1,66 @@
+<!-- Profil utilisateur -->
+
+<div ng-controller="ProfileController">
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+            <h3>Profil utilisateur</h3>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <!-- Formulaire permettant de renseigner le sexe et l'age -->
+                    <form class="form-horizontal">
+
+                        <!-- Selection du sexe -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="gender">Sexe :</label>
+                            <div class="col-sm-8">
+                                <select id="gender" ng-model="gender" class="form-control">
+                                    <option value="male">Homme</option>
+                                    <option value="female">Femme</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Saisie de l'age -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="age">Age :</label>
+                            <div class="col-sm-8">
+                                <input type="number" ng-model="age" class="form-control" id="age" value="20">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bloc informant l'utilisateur du nombre de calories restantes -->
+            <div class="panel panel-remark" ng-hide="isExceedingDailyRecommendedCalorieIntake()">
+                <div class="panel-body">
+                    <div>
+                        Il vous reste {{ remainingCalories() }} kcal avant d'excéder l'apport journalier idéal défini par votre profil.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloc informant l'utilisateur du dépassement du seuil de calories -->
+            <div class="panel panel-alert" ng-show="isExceedingDailyRecommendedCalorieIntake()">
+                <div class="panel-body">
+                    <div>
+                        La valeur calorifique de votre garde manger excède l'apport journalier idéal défini par votre profil !
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloc informant l'utilisateur du dépassement du seuil de sodium -->
+            <div class="panel panel-alert" ng-show="isExceedingDailyRecommendedSodiumIntake()">
+                <div class="panel-body">
+                    <div>
+                        La quantité de sel de votre garde manger dépasse l'apport journalier préconisé par l'OMS !
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

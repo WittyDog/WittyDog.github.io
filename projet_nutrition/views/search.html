@@ -1,0 +1,70 @@
+<!-- Barre de recherche et résultats de recherche -->
+
+<div ng-controller="SearchController">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            
+            <h3>Recherche</h3>
+            
+            <!-- Barre de recherche -->
+            <div class="col-md-12 search-bar">
+                <input 
+                    type="text" 
+                    ng-model="input"
+                    class="form-control input-lg" 
+                    placeholder="Rechercher un aliment" />
+
+            </div>
+
+            <!-- Bloc dédié au filtre -->
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-body">
+
+                    <!-- Checkox permettant d'afficher et d'activer le filtre -->
+                    <input type="checkbox" ng-model="filter"/> 
+                    <span>Filtre {{ filter ? "(activé)" : "(désactivé)" }}</span>
+
+                    <!-- Filtre permettant de choisir un seuil de calories par aliment -->
+                    <div ng-show="filter">
+                        <span>Valeur calorifique maximale : </span>
+                        <input type="number" ng-model="filter_calories" min="0" value="10">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloc qui liste les résultats d'une recherche -->
+            <div class="col-md-12 panel panel-default" ng-show="results[0]">
+                <div class="panel-body">
+
+                    <h3>Résultats de recherches</h3>
+
+                    <div class="panel-group">
+                        <div class="panel panel-default" ng-repeat="result in results">
+                            <div class="panel-body">
+
+                                <!-- Nom de l'aliment -->
+                                <strong>{{result.fields.item_name}}</strong>
+
+                                <!-- Bouton de sélection de l'aliment -->
+                                <span 
+                                    class="glyphicon glyphicon-plus pull-right custom-icon" 
+                                    ng-click="addToPantry(result._id,result.fields)">
+                                </span>
+
+                                <!-- Informations sur l'aliment : calories, graisses et sodium -->
+                                <div class="row">
+                                    <div class="col-md-4">Calories : {{result.fields.nf_calories}}kcal</div>
+                                    <div class="col-md-4">Graisses : {{result.fields.nf_saturated_fat}}g</div>
+                                    <div class="col-md-4">Sel : {{result.fields.nf_sodium}}g</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
